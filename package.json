@@ -1,0 +1,24 @@
+{
+  "name": "pw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://ivansil@github.com/ivansil/programacion-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivansil/programacion-web/issues"
+  },
+  "homepage": "https://github.com/ivansil/programacion-web#readme",
+  "dependencies": {
+    "f2c-thiagogaspar": "^1.0.2",
+    "request": "^2.88.2"
+  }
+}

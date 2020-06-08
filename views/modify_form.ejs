@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Page Title</title>
+<link href="/style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+	<h3>Modificar usuario</h3>
+	<form method="POST" action="/modify_user">
+		<input type="hidden" name="_id" id="_id" value="<%= user._id %>">
+		<label>Usuario</label><br>
+		<input type="text" name="userName" id="userName" value="<%= user.userName %>"><br><br>
+		<label>Contraseña</label><br>
+		<input type="text" name="password" id="password" value="<%= user.password %>"><br><br>
+		<input type="submit" value="Actualizar datos">
+	</form>
+</body>
+
+</html>

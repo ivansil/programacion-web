@@ -1,0 +1,19 @@
+* {
+	font-family: "Noto Sans";
+	font-size: 14px;
+}
+
+.button-del {
+	color: #e44;
+	font-weight: bold;
+}
+
+.button-edi {
+	color: #888;
+	font-weight: bold;
+}
+
+body {
+	margin: 5% auto;
+	width: 50%;
+}

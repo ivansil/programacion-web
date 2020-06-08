@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Page Title</title>
+<link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+	<table border="1" cellspacing="0" cellpadding="12">	
+		<tr>
+			<th>Id</th>
+			<th>Username</th>
+			<th>Password</th>
+			<th>Delete</th>
+			<th>Edit</th>
+		</tr>
+
+		<% for(let i=0; i < users.length; i++){ %>
+	
+			<tr>
+				<td><%= users[i]._id %></td>
+				<td><%= users[i].userName %></td>
+				<td><%= users[i].password %></td>
+				<form method="POST" action="/delete_user">
+					<input type="hidden" name="_id" value="<%= users[i]._id %>">
+					<td><button type="submit" class="button-del">x</button></td>
+				</form>
+					
+				<form method="POST" action="/modify">
+					<input type="hidden" name="_id" value="<%= users[i]._id %>">
+					<td><button type="submit" class="button-edi">✎</button></td>
+				</form>
+			</tr>
+			
+		<% } %>
+
+	</table>
+</body>
+</html>

@@ -21,6 +21,7 @@
 				<td><%= users[i].password %></td>
 				<form method="POST" action="/delete_user">
 					<input type="hidden" name="_id" value="<%= users[i]._id %>">
+					<input type="hidden" name="userName" value="<%= users[i].userName %>">
 					<td><button type="submit" class="button-del">x</button></td>
 				</form>
 					

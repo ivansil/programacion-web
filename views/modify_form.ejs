@@ -5,14 +5,14 @@
 </head>
 
 <body>
-	<h3>Modificar usuario</h3>
+	<h3>Modify user</h3>
 	<form method="POST" action="/modify_user">
 		<input type="hidden" name="_id" id="_id" value="<%= user._id %>">
-		<label>Usuario</label><br>
+		<label>username</label><br>
 		<input type="text" name="userName" id="userName" value="<%= user.userName %>"><br><br>
-		<label>Contraseña</label><br>
+		<label>password</label><br>
 		<input type="text" name="password" id="password" value="<%= user.password %>"><br><br>
-		<input type="submit" value="Actualizar datos">
+		<input type="submit" value="update">
 	</form>
 </body>
 

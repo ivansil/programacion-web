@@ -1,15 +1,14 @@
 <html>
 <head>
 <title>Page Title</title>
-<link href="/assets/style.css" type="text/css" rel="stylesheet">
+<link href="./style.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-	<h3>Buscar usuario</h3>
-	<form method="POST" action="/users">
-		username <input type="text" id="userName" name="userName" /><br />
-	<!-- 	Lastname <input type="text" id="lastname" name="lastname" /><br /> -->
-	<input type="submit" value="Enviar">
+	<h3>Search by username</h3>
+	<form method="POST" action="/search_users">
+		username <input type="text" id="userName" name="userName" /><br><br>
+	<input type="submit" value="search">
 </form>
 
 </body>

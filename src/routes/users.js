@@ -21,70 +21,70 @@ router.get("/search", (request,response)=>{
 });
 
 router.post("/search_users", urlEncodedParser,(request, response)=>{
-	User.find({userName: request.body.userName}, (err, doc)=>{
-		if (err) {
-			response.send("<h2>ERROR</h2>");
-		}else{	
-			if (doc.length===0) {
-				response.send("0 resultados");
-			}else{
-				response.render("users_list", {users: doc});
-			}
+	User.find({userName: request.body.userName}).exec()
+	.then((users)=>{
+		if (users.length===0) {
+			response.render("no_results");
+		}else{
+			response.render("users_list", {users});
 		}
+	})
+	.catch((err)=>{
+		console.log(err);
+		response.send("<h2>ERROR</h2>");
 	});
 });
 
 router.post("/delete_user", urlEncodedParser, (request,response)=>{
-	User.findOneAndDelete({_id: request.body._id}, (err)=>{
-		if(err){
-			response.send("<h2>ERROR</h2>");
-		}else{
+	User.findOneAndDelete({_id: request.body._id}).exec()
+		.then(()=>{
 			response.render("deleted");
-		}
-	});
+		})
+		.catch(()=>{
+			response.send("<h2>ERROR</h2>");
+		});
 });
 
 router.post("/modify", urlEncodedParser,(request,response)=>{
-	User.findOne({_id: request.body._id}, (err, user)=>{
-		if (err) {
-			response.send("<h2>ERROR</h2>");
-		}else{
+	User.findOne({_id: request.body._id}).exec()
+		.then((user)=>{
 			response.render("modify_form", {user});
-		}
-	});
+		})
+		.catch((err)=>{
+			response.send("<h2>ERROR</h2>");
+		});
 });
 
 router.post("/modify_user", urlEncodedParser, (request, response)=>{
 	User.findOneAndUpdate({ _id: request.body._id }, 
 		{	_id: request.body._id, 
 			userName: request.body.userName, 
-			password: request.body.password	},
-		(err, user)=>{
-		if (err) {
-			response.send("ERROR");
-		}else{
+			password: request.body.password	}).exec()
+		.then((user)=>{
 			response.render("registered");
-		}
-	});
+		})
+		.catch((err)=>{
+			response.send("ERROR");
+		});
 });
 
 router.post("/register_user", urlEncodedParser,(request, response)=>{
-	User.find({userName: request.body.userName}, (err, doc)=>{
-		if (err) {
-			response.send("<h2>ERROR</h2>");
-		}else{	
+	User.find({userName: request.body.userName}).exec()
+		.then(()=>{
 			let user = new User({
 				userName: request.body.userName,
 				password: request.body.password
 			});
 			user.save((data, err)=>{
 				if(err) {
-					response.render("Error al guardar");
+					response.send("<h2>Error saving user</h2>");
 				}
 			});
 			response.render("registered");
-		}
-	});
+		})
+		.catch((err)=>{
+			response.send("<h2>ERROR</h2>");
+		});
 });
 
 

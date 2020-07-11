@@ -19,16 +19,8 @@
 				<td><%= users[i]._id %></td>
 				<td><%= users[i].userName %></td>
 				<td><%= users[i].password %></td>
-				<form method="POST" action="/delete_user">
-					<input type="hidden" name="_id" value="<%= users[i]._id %>">
-					<input type="hidden" name="userName" value="<%= users[i].userName %>">
-					<td><button type="submit" class="button-del">x</button></td>
-				</form>
-					
-				<form method="POST" action="/modify">
-					<input type="hidden" name="_id" value="<%= users[i]._id %>">
-					<td><button type="submit" class="button-edi">✎</button></td>
-				</form>
+				<td><a href="/delete_user/<%= users[i]._id %>" class="button-del">x</a></td>
+				<td><a href="/modify/<%= users[i]._id %>" class="button-edi">✎</a></td>
 			</tr>
 			
 		<% } %>
